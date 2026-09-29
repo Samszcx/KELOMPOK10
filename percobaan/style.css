@@ -1,0 +1,61 @@
+:root{--indigo:#2b2d8f;--sun:#ffd23f;--paper:#f7f6ff;--ink:#14142b;--mute:#5b5c7a;--line:#d9d8ef}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 "Instrument Sans","Segoe UI",system-ui,sans-serif}
+h1,h2,.logo{font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;letter-spacing:-.03em}
+a{color:inherit}
+.top{background:var(--indigo);color:#fff;position:sticky;top:0;z-index:5}
+.top .in{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.25rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo::before{content:"";width:16px;height:16px;background:var(--sun);border-radius:4px;transform:rotate(12deg)}
+nav{display:flex;gap:6px}
+nav a{text-decoration:none;padding:6px 14px;border-radius:8px;font-weight:600;font-size:.92rem}
+nav a:hover{background:rgba(255,255,255,.14)}
+nav a.on{background:var(--sun);color:var(--ink)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 64px}
+h1{font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.02;font-weight:800;margin:0 0 16px}
+.lead{color:var(--mute);max-width:52ch;margin:0}
+.head{padding:56px 0 32px}
+.btn{display:inline-block;background:var(--sun);color:var(--ink);font-weight:700;text-decoration:none;padding:12px 20px;border-radius:10px;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.ghost{background:transparent}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:64px 0}
+.frame{aspect-ratio:4/3;transform:rotate(2deg);border:3px solid var(--ink);border-radius:18px;box-shadow:12px 12px 0 var(--sun);overflow:hidden;background:#dcdaf5;display:grid;place-items:center;color:var(--mute);font-size:.9rem}
+.frame img,.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.about{background:var(--indigo);color:#fff;border-radius:22px;padding:40px}
+.about h2{margin:0 0 10px;font-size:1.9rem}
+.about p{margin:0;max-width:60ch;color:#dcdcff}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px 20px;padding-top:12px}
+.badge{background:#fff;border:2px solid var(--ink);border-radius:16px;overflow:hidden;text-align:left;cursor:pointer;font:inherit;color:inherit;padding:0;transition:transform .2s}
+.badge:nth-child(odd){transform:rotate(-1.2deg)}.badge:nth-child(even){transform:rotate(1deg)}
+.badge:hover{transform:rotate(0) translateY(-4px)}
+.badge .band{background:var(--indigo);color:#fff;padding:22px 16px 34px;font-size:.8rem;font-weight:600;position:relative}
+.badge .band::before{content:"";position:absolute;top:8px;left:50%;width:44px;height:8px;margin-left:-22px;background:var(--paper);border-radius:8px}
+.badge.ketua .band{background:var(--sun);color:var(--ink)}
+.av{width:84px;height:84px;border-radius:20px;background:var(--sun);border:3px solid var(--ink);margin:-30px 0 0 16px;position:relative;display:grid;place-items:center;font:800 2rem "Bricolage Grotesque",sans-serif;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.badge .bd{padding:10px 16px 20px}
+.name{font:700 1.15rem/1.25 "Bricolage Grotesque",sans-serif;margin:0 0 6px}
+.meta{margin:0;font-size:.85rem;color:var(--mute)}
+.meta b{color:var(--ink)}
+.modal,.lb{position:fixed;inset:0;background:rgba(20,20,43,.6);display:none;place-items:center;padding:20px;z-index:10}
+.modal.show,.lb.show{display:grid}
+.box{background:#fff;border:3px solid var(--ink);border-radius:20px;padding:26px;max-width:340px;width:100%;position:relative;box-shadow:8px 8px 0 var(--sun)}
+.box .av{margin:0 0 14px;width:100px;height:100px}
+.x{position:absolute;top:8px;right:14px;border:0;background:none;font-size:1.7rem;cursor:pointer;color:var(--mute)}
+.ig{margin-top:14px}
+.tabs{display:flex;gap:22px;border-bottom:2px solid var(--line);margin-bottom:28px;flex-wrap:wrap}
+.tabs button{border:0;background:none;font:700 .95rem inherit;font-family:inherit;color:var(--mute);padding:10px 0;cursor:pointer;border-bottom:5px solid transparent;margin-bottom:-2px}
+.tabs button.on{color:var(--ink);border-color:var(--sun)}
+.masonry{columns:3 230px;column-gap:20px}
+.pol{break-inside:avoid;margin:0 0 20px;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:10px 10px 14px;display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;transition:transform .2s}
+.pol:hover{transform:rotate(-1deg) scale(1.02)}
+.ph{background:#dcdaf5;display:grid;place-items:center;color:var(--mute);font-size:.85rem;overflow:hidden}
+.pol:nth-child(3n+1) .ph{aspect-ratio:3/4}.pol:nth-child(3n+2) .ph{aspect-ratio:1}.pol:nth-child(3n) .ph{aspect-ratio:4/3}
+.pol .jd{font-weight:700;margin-top:10px}.pol .tag{font-size:.8rem;color:var(--indigo)}
+.lb img{max-width:100%;max-height:86vh;border:3px solid #fff;border-radius:8px}
+.lb p{color:#fff}
+footer{border-top:2px solid var(--line);padding:22px;text-align:center;color:var(--mute);font-size:.85rem}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:36px 0}.about{padding:26px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

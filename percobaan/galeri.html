@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Galeri — Kelompok XX</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
+<header class="top"><div class="in"><a class="logo" href="index.html">Kelompok XX</a><nav><a href="index.html">Beranda</a><a href="galeri.html" class="on">Galeri</a><a href="anggota.html">Anggota</a></nav></div></header>
+<main class="wrap"><section class="head"><h1>Momen yang kami simpan</h1><p class="lead">Klik foto untuk memperbesar, atau pilih kategori untuk menyaring.</p></section>
+<div class="tabs" id="tabs"></div><section class="masonry" id="grid"></section></main>
+<div class="lb" id="lb"><div id="lbc"></div></div><footer>© Kelompok XX</footer>
+<script>
+/* ISI FOTO DI SINI. Satu baris = satu foto. Baris terakhir tanpa koma.
+   src: path foto (taruh di folder "foto") | judul: teks di bawah foto | kategori: bebas.
+   Tab kategori dibuat otomatis dari kategori yang kamu pakai. */
+const fotos=[
+ {src:"foto/mabim1.jpg",judul:"Foto bersama Mabim",kategori:"Mabim"},
+ {src:"foto/mabim2.jpg",judul:"Foto bersama Mabim",kategori:"Mabim"},
+ {src:"foto/mentoring1.jpg",judul:"Sesi mentoring",kategori:"Mentoring"},
+ {src:"foto/mentoring2.jpg",judul:"Sesi mentoring",kategori:"Mentoring"}
+];
+const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const grid=document.getElementById('grid'),tabs=document.getElementById('tabs'),lb=document.getElementById('lb'),lbc=document.getElementById('lbc');
+const cats=["Semua",...new Set(fotos.map(f=>f.kategori))];let aktif="Semua";
+function render(){
+ tabs.innerHTML=cats.map(c=>'<button class="'+(c===aktif?'on':'')+'" data-c="'+esc(c)+'">'+esc(c)+'</button>').join("");
+ grid.innerHTML="";
+ fotos.filter(f=>aktif==="Semua"||f.kategori===aktif).forEach(f=>{
+  const b=document.createElement('button');b.className='pol';
+  b.innerHTML='<div class="ph"><img src="'+esc(f.src)+'" alt="'+esc(f.judul)+'" onerror="this.remove()">Foto belum ada</div><div class="jd">'+esc(f.judul)+'</div><div class="tag">'+esc(f.kategori)+'</div>';
+  b.onclick=()=>{lbc.innerHTML='<img src="'+esc(f.src)+'" alt="'+esc(f.judul)+'" onerror="this.outerHTML=\'<p>Foto belum ada</p>\'">';lb.classList.add('show')};
+  grid.appendChild(b)})}
+tabs.onclick=e=>{if(e.target.dataset.c){aktif=e.target.dataset.c;render()}};
+lb.onclick=()=>lb.classList.remove('show');
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('show')});
+render();
+</script></body></html>
