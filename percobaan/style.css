@@ -16,6 +16,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--sun);outline-offset
 h1{font-size:clamp(2.2rem,6vw,3.9rem);line-height:1.02;font-weight:800;margin:0 0 16px}
 .lead{color:var(--mute);max-width:52ch;margin:0}
 .head{padding:56px 0 32px}
+.mentor-head,.anggota-head{padding:0 0 18px}
+.mentor-head h2,.anggota-head h2{margin:0 0 8px;font-size:clamp(1.5rem,4vw,2.3rem);line-height:1.1}
 .btn{display:inline-block;background:var(--sun);color:var(--ink);font-weight:700;text-decoration:none;padding:12px 20px;border-radius:10px;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
 .btn:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
 .btn.ghost{background:transparent}

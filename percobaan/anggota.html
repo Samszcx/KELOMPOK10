@@ -1,10 +1,18 @@
 <!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Anggota — Kelompok 10</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
 <header class="top"><div class="in"><a class="logo" href="index.html">Kelompok 10</a><nav><a href="index.html">Beranda</a><a href="galeri.html">Galeri</a><a href="anggota.html" class="on">Anggota</a></nav></div></header>
-<main class="wrap"><section class="head"><h1>Para Anggota Kelompok 10</h1><p class="lead">Klik kartu nama untuk melihat detail dan akun Instagram.</p></section>
+<main class="wrap"><section class="head"><h1>Mentor & Anggota Kelompok 10</h1><p class="lead">Klik kartu nama untuk melihat detail dan akun Instagram.</p></section>
+<section class="head mentor-head"><h2>Mentor</h2><p class="lead">Dua mentor kami yang selalu memberikan arahan dan dukungan.</p></section>
+<section class="badges" id="mentorsGrid"></section>
+<section class="head anggota-head"><h2>Para Anggota</h2><p class="lead">Setiap anggota berkontribusi dalam menjalankan proyek ini.</p></section>
 <section class="badges" id="grid"></section></main>
 <div class="modal" id="modal" role="dialog" aria-modal="true"><div class="box"><button class="x" id="close" aria-label="Tutup">×</button><div id="detail"></div></div></div>
 <footer>© Kelompok 10</footer>
 <script>
+
+const mentors=[
+ {nama:"Mentor 1",peran:"Mentor",npm:"",ig:"mentor1",foto:""},
+ {nama:"Mentor 2",peran:"Mentor",npm:"",ig:"mentor2",foto:""}
+];
 
 const members=[
  {nama:"Muhammad Ziya Ulhaq",peran:"Ketua",npm:"267006111196",ig:"ziyaaulll_",foto:"foto/ziya.jpg"},
@@ -23,12 +31,10 @@ const members=[
 const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const av=m=>'<div class="av">'+(m.foto?'<img src="'+esc(m.foto)+'" alt="'+esc(m.nama)+'" onerror="this.parentNode.textContent=\''+esc(m.nama[0])+'\'">':esc(m.nama[0]))+'</div>';
 const info=m=>'<p class="name">'+esc(m.nama)+'</p><p class="meta"><b>NPM</b> '+(esc(m.npm)||'-')+'</p><p class="meta"><b>Instagram</b> '+(m.ig?'@'+esc(m.ig):'-')+'</p>';
-const grid=document.getElementById('grid'),modal=document.getElementById('modal'),detail=document.getElementById('detail');
-members.forEach(m=>{
- const b=document.createElement('button');b.className='badge'+(m.peran==='Ketua'?' ketua':'');
- b.innerHTML='<div class="band">'+esc(m.peran)+'</div>'+av(m)+'<div class="bd">'+info(m)+'</div>';
- b.onclick=()=>{detail.innerHTML=av(m)+info(m)+(m.ig?'<a class="btn ig" href="https://instagram.com/'+encodeURIComponent(m.ig)+'" target="_blank" rel="noopener">Buka Instagram</a>':'');modal.classList.add('show')};
- grid.appendChild(b)});
+const grid=document.getElementById('grid'),mentorGrid=document.getElementById('mentorsGrid'),modal=document.getElementById('modal'),detail=document.getElementById('detail');
+const addCard=(target,data,extra='')=>{const b=document.createElement('button');b.className='badge'+(extra?` ${extra}`:'');b.innerHTML='<div class="band">'+esc(data.peran)+'</div>'+av(data)+'<div class="bd">'+info(data)+'</div>';b.onclick=()=>{detail.innerHTML=av(data)+info(data)+(data.ig?'<a class="btn ig" href="https://instagram.com/'+encodeURIComponent(data.ig)+'" target="_blank" rel="noopener">Buka Instagram</a>':'');modal.classList.add('show')};target.appendChild(b)};
+mentors.forEach(m=>addCard(mentorGrid,m));
+members.forEach(m=>addCard(grid,m,m.peran==='Ketua'?'ketua':''));
 const hide=()=>modal.classList.remove('show');
 document.getElementById('close').onclick=hide;modal.onclick=e=>{if(e.target===modal)hide()};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
